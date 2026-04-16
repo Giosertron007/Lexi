@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- ═══════════════════════════════════════════════════════
+     ✏️  STEP 1 — CHANGE THESE 5 LINES (title & social share)
+     ═══════════════════════════════════════════════════════ -->
+<title>Quinceañera — Lexi Belle</title>
+<meta name="description" content="You are invited to celebrate CLIENT_NAME's Quinceañera on EVENT_DATE_EN"/>
+
+<!-- Open Graph — controls how it looks when shared on WhatsApp / iMessage / Facebook -->
+<meta property="og:title"       content="¡Mis Quince Años! — CLIENT_NAME"/>
+<meta property="og:description" content="You are invited · Estás invitado — EVENT_JUNE 5 2026_EN"/>
+<meta property="og:image"       content="img/cover.jpg"/>   <!-- your cover photo -->
+<meta property="og:type"        content="website"/>
+<meta name="twitter:card"       content="summary_large_image"/>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   IMAGE369 DIGITAL INVITATION v2 — MASTER TEMPLATE
+   ✏️  Search for CLIENT_ and EVENT_ to find all replaceable text
+   ═══════════════════════════════════════════════════════ */
+
+/* ── THEME COLORS — change --gold to match event color ── */
+:root {
+  --gold:        #C9A84C;
+  --gold-lt:     #E8CF84;
+  --gold-dk:     #7A5F18;
+  --gold-glow:   rgba(201,168,76,0.18);
+  --black:       #080808;
+  --dark:        #111111;
+  --dark2:       #171717;
+  --dark3:       #202020;
+  --white:       #FFFFFF;
+  --cream:       #F7F3EC;
+  --gray:        #777777;
+  --gray-lt:     #AAAAAA;
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-sans:   'Jost', sans-serif;
+  --ease:        cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ── UTILITIES ── */
+.gold      { color: var(--gold); }
+.center    { text-align: center; }
+.serif     { font-family: var(--font-serif); }
+.uppercase { text-transform: uppercase; letter-spacing: 5px; font-size: 10px; }
+
+.section {
+  padding: 80px 24px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.divider {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  margin: 28px auto;
+  opacity: 0.5;
+}
+.divider-full {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.35), transparent);
+}
+
+/* ── FADE IN ANIMATION ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ════════════════════════════════════════
+   SECTION 0 — HERO / COVER
+   ════════════════════════════════════════ */
+#cover {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 64px;
+  overflow: hidden;
+}
+#cover-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.04);
+  transition: transform 8s ease-out;
+}
+#cover-img.loaded { transform: scale(1); }
+
+#cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.04)  0%,
+    rgba(0,0,0,0.08)  35%,
+    rgba(0,0,0,0.68)  70%,
+    rgba(0,0,0,0.94) 100%
+  );
+}
+
+/* gold sparkle lines top */
+#cover::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#cover-content {
+  position: relative;
+  text-align: center;
+  padding: 0 28px;
+  width: 100%;
+  z-index: 3;
+}
+
+.cover-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s var(--ease) forwards;
+}
+.cover-name {
+  font-family: var(--font-serif);
+  font-size: clamp(72px, 20vw, 120px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 10px;
+  text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  animation: fadeUp 1s 0.5s var(--ease) forwards;
+}
+.cover-subtitle {
+  font-size: 9px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 1s 0.7s var(--ease) forwards;
+}
+.cover-date-pill {
+  display: inline-block;
+  border: 1px solid rgba(201,168,76,0.45);
+  color: var(--gold-lt);
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 12px 32px;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s var(--ease) forwards;
+}
+.cover-scroll {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.28);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 1s 1.2s var(--ease) forwards;
+}
+.cover-scroll::after {
+  content: '';
+  display: block;
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  margin: 10px auto 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ════════════════════════════════════════
+   SECTION 1 — WELCOME MESSAGE
+   ════════════════════════════════════════ */
+#welcome { text-align: center; }
+
+.welcome-label {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.welcome-name {
+  font-family: var(--font-serif);
+  font-size: clamp(46px, 11vw, 72px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.welcome-title {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 32px;
+}
+.welcome-date-en {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.welcome-date-es {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gray-lt);
+  margin-bottom: 40px;
+}
+.welcome-quote {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ════════════════════════════════════════
+   SECTION 2 — FULL WIDTH PHOTO
+   ════════════════════════════════════════ */
+.photo-full {
+  width: 100%;
+  max-height: 90svh;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.photo-caption {
+  text-align: center;
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 16px;
+  background: var(--dark2);
+}
+
+/* ════════════════════════════════════════
+   SECTION 3 — COUNTDOWN
+   ════════════════════════════════════════ */
+#countdown {
+  text-align: center;
+  background: var(--dark2);
+  position: relative;
+  overflow: hidden;
+}
+#countdown::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.countdown-label-top {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+}
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.countdown-unit { text-align: center; min-width: 72px; }
+.countdown-num {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 12vw, 72px);
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+.countdown-sub {
+  font-size: 7px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 8px;
+}
+.countdown-sep {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  color: var(--gold-dk);
+  opacity: 0.4;
+  line-height: 1;
+  padding-top: 6px;
+  align-self: flex-start;
+}
+
+/* ════════════════════════════════════════
+   SECTION 4 — FAMILY
+   ════════════════════════════════════════ */
+#family { text-align: center; }
+.family-block { margin-bottom: 44px; }
+.family-block:last-child { margin-bottom: 0; }
+.family-role {
+  font-size: 8px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.family-names {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.6;
+}
+.family-names span {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-family: var(--font-sans);
+  margin-top: 6px;
+}
+.family-and {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--gold-dk);
+  opacity: 0.7;
+  display: block;
+  margin: 8px 0;
+}
+
+/* ════════════════════════════════════════
+   SECTION 5 — CEREMONY & RECEPTION
+   ════════════════════════════════════════ */
+#locations { text-align: center; }
+.section-eyebrow {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 8vw, 52px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.section-subtitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gray);
+  margin-bottom: 0;
+}
+
+.location-block {
+  margin: 50px 0;
+  padding: 36px 28px;
+  border: 1px solid rgba(201,168,76,0.18);
+  position: relative;
+  background: var(--dark2);
+}
+.location-block::before {
+  content: '';
+  position: absolute; top: -1px; left: 20%; right: 20%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+.location-type {
+  font-size: 8px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.location-name {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.location-address {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--gray-lt);
+  margin-bottom: 20px;
+}
+.location-time {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.btn-map {
+  display: inline-block;
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 10px 28px;
+  text-decoration: none;
+  transition: all 0.3s;
+  background: transparent;
+}
+.btn-map:hover { background: var(--gold-glow); }
+
+/* ════════════════════════════════════════
+   SECTION 6 — ITINERARY
+   ════════════════════════════════════════ */
+#itinerary { text-align: center; background: var(--dark2); }
+.itinerary-list { margin-top: 40px; text-align: left; }
+.itinerary-item {
+  display: flex;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  align-items: flex-start;
+}
+.itinerary-item:last-child { border-bottom: none; }
+.itinerary-time {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--gold);
+  min-width: 72px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+.itinerary-event {
+  font-size: 13px;
+  color: var(--white);
+  line-height: 1.5;
+}
+.itinerary-sub {
+  font-size: 10px;
+  color: var(--gray);
+  margin-top: 3px;
+  letter-spacing: 1px;
+}
+
+/* ════════════════════════════════════════
+   SECTION 7 — SECOND PHOTO
+   ════════════════════════════════════════ */
+
+/* ════════════════════════════════════════
+   SECTION 8 — QR / SHARE
+   ════════════════════════════════════════ */
+#share { text-align: center; }
+.qr-box {
+  display: inline-block;
+  padding: 18px;
+  background: var(--white);
+  border: 4px solid var(--dark3);
+  outline: 1px solid var(--gold);
+  margin: 28px auto;
+}
+.qr-box img { width: 180px; height: 180px; object-fit: contain; }
+.share-text {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--gray-lt);
+}
+
+/* ════════════════════════════════════════
+   SECTION 9 — RSVP
+   ════════════════════════════════════════ */
+#rsvp { text-align: center; background: var(--dark2); }
+.rsvp-eyebrow {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.rsvp-title {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 9vw, 56px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.rsvp-deadline {
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 1px;
+  margin-bottom: 44px;
+}
+.rsvp-form { text-align: left; }
+.form-group { margin-bottom: 22px; }
+.form-label {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.form-input, .form-select {
+  width: 100%;
+  background: var(--dark3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-bottom-color: rgba(201,168,76,0.3);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus {
+  border-color: var(--gold);
+}
+.form-radio-group { display: flex; gap: 16px; }
+.form-radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.form-radio input[type="radio"] { accent-color: var(--gold); width: 16px; height: 16px; }
+.form-radio label { font-size: 13px; cursor: pointer; }
+
+.btn-submit {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px;
+}
+.btn-submit:hover { background: var(--gold-glow); }
+
+.rsvp-success { display: none; text-align: center; padding: 40px 0; }
+.success-icon { font-size: 48px; margin-bottom: 20px; }
+.success-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.success-msg { font-size: 14px; color: var(--gray-lt); line-height: 1.7; }
+
+/* ════════════════════════════════════════
+   SECTION 10 — CONTACTS
+   ════════════════════════════════════════ */
+#contacts { text-align: center; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 36px;
+}
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  background: var(--dark2);
+  transition: all 0.3s;
+}
+.contact-item:hover { border-color: rgba(201,168,76,0.4); background: var(--dark3); }
+.contact-role {
+  font-size: 7px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.contact-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--white);
+}
+.contact-phone {
+  font-size: 12px;
+  color: var(--gray-lt);
+  letter-spacing: 1px;
+}
+.contact-wa {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #25D366;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════ */
+footer {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--dark);
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+.footer-by {
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.footer-tagline {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 28px;
+}
+.footer-links {
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+.footer-links a {
+  color: var(--gray-lt);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SECTION 0 — HERO COVER
+     ✏️  Replace cover.jpg with client's best portrait
+     ══════════════════════════════════════ -->
+<section id="cover">
+  <img id="cover-img" src="img/cover.jpg" alt="DON ESTIMADO" loading="eager"/>
+  <div id="cover-overlay"></div>
+  <div id="cover-content">
+    <p class="cover-eyebrow">¡Mis Quince Años! &nbsp;·&nbsp; My Quinceañera</p>
+    <!-- ✏️ CHANGE: client name -->
+    <h1 class="cover-name">DON ESTIMADO</h1>
+    <p class="cover-subtitle">Celebrates Her Quinceañera</p>
+    <!-- ✏️ CHANGE: event date display -->
+    <div class="cover-date-pill">JUNE 5 2026</div>
+    <p class="cover-scroll">Scroll to explore</p>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — WELCOME
+     ✏️  Replace name, dates, optional quote
+     ══════════════════════════════════════ -->
+<section id="welcome" class="section fade-in">
+  <p class="welcome-label">You Are Invited · Estás Invitado</p>
+  <h2 class="welcome-name">DON ESTIMADO</h2>
+  <p class="welcome-title">Quinceañera</p>
+  <!-- ✏️ CHANGE: dates in English and Spanish -->
+  <p class="welcome-date-en">JUNE 5 2026</p>
+  <p class="welcome-date-es">JUNE 5 2026</p>
+  <div class="divider"></div>
+  <!-- ✏️ CHANGE or DELETE this quote -->
+  <p class="welcome-quote serif">
+    "She is clothed with strength and dignity,<br/>
+    and she laughs without fear of the future."
+  </p>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 2 — PHOTO 1
+     ✏️  Replace img/photo1.jpg (portrait, 3:4 ratio)
+     ══════════════════════════════════════ -->
+<img class="photo-full" src="img/photo1.jpg" alt="CLIENT_NAME"/>
+<p class="photo-caption">Photography &amp; Videography · Image369</p>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 3 — COUNTDOWN
+     ✏️  Update EVENT_YEAR, EVENT_MONTH_INDEX, EVENT_DAY, EVENT_HOUR in the JS below
+     ══════════════════════════════════════ -->
+<section id="countdown" class="section fade-in">
+  <p class="countdown-label-top">Counting Down To The Big Day</p>
+  <div class="countdown-grid">
+    <div class="countdown-unit">
+      <span class="countdown-num" id="cd-days">00</span>
+      <p class="countdown-sub">Days · Días</p>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit">
+      <span class="countdown-num" id="cd-hours">00</span>
+      <p class="countdown-sub">Hours · Horas</p>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit">
+      <span class="countdown-num" id="cd-mins">00</span>
+      <p class="countdown-sub">Min</p>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit">
+      <span class="countdown-num" id="cd-secs">00</span>
+      <p class="countdown-sub">Sec</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 4 — FAMILY
+     ✏️  Replace all parent / godparent names
+     ══════════════════════════════════════ -->
+<section id="family" class="section fade-in">
+  <p class="section-eyebrow">With Love From</p>
+  <h2 class="section-title">Her Family</h2>
+  <div class="divider"></div>
+
+  <!-- Parents -->
+  <div class="family-block">
+    <p class="family-role">Sus Padres · Her Parents</p>
+    <p class="family-names">
+      DON JUAN BOTIJON
+      <em class="family-and">&amp;</em>
+      DONA CATALINA
+    </p>
+  </div>
+
+  <!-- Godparents — DELETE this block if no godparents -->
+  <div class="family-block">
+    <p class="family-role">Sus Padrinos · Godparents</p>
+    <p class="family-names">
+      ELVER GALARGA
+      <em class="family-and">&amp;</em>
+      ROSA MESTA
+    </p>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 5 — LOCATIONS
+     ✏️  Replace all church / venue info and Google Maps links
+     ✏️  DELETE the ceremony block if no church
+     ══════════════════════════════════════ -->
+<section id="locations" class="section fade-in">
+  <p class="section-eyebrow">Join Us</p>
+  <h2 class="section-title">Where & When</h2>
+  <p class="section-subtitle">Dónde y Cuándo</p>
+  <div class="divider"></div>
+
+  <!-- Religious Ceremony — DELETE if no church -->
+  <div class="location-block fade-in">
+    <p class="location-type">Religious Ceremony · Misa</p>
+    <p class="location-name">CRISTO</p>
+    <p class="location-address">
+      CHURCH_ADDRESS<br/>
+      CHURCH_CITY_STATE
+    </p>
+    <!-- ✏️ CHANGE: ceremony time -->
+    <p class="location-time">5:00 PM</p>
+    <!-- ✏️ CHANGE: paste your Google Maps URL -->
+    <a class="btn-map" href="CHURCH_MAPS_LINK" target="_blank">
+      Open in Maps &nbsp; → &nbsp; Ver Mapa
+    </a>
+  </div>
+
+  <!-- Reception -->
+  <div class="location-block fade-in">
+    <p class="location-type">Reception · Recepción</p>
+    <p class="location-name">KRON EVENT VENUE</p>
+    <p class="location-address">
+      VENUE_ADDRESS<br/>
+      VENUE_CITY_STATE
+    </p>
+    <!-- ✏️ CHANGE: reception time -->
+    <p class="location-time">7:00 PM</p>
+    <!-- ✏️ CHANGE: paste your Google Maps URL -->
+    <a class="btn-map" href="https://maps.app.goo.gl/J5GHvPZmvLFxm7eF9" target="_blank">
+      Open in Maps &nbsp; → &nbsp; Ver Mapa
+    </a>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 6 — ITINERARY
+     ✏️  Update times and events as needed
+     ✏️  DELETE the whole section if not needed
+     ══════════════════════════════════════ -->
+<section id="itinerary" class="section fade-in">
+  <p class="section-eyebrow">The Evening · La Noche</p>
+  <h2 class="section-title">Program</h2>
+  <div class="divider"></div>
+
+  <div class="itinerary-list">
+    <div class="itinerary-item">
+      <span class="itinerary-time">5:00 PM</span>
+      <div>
+        <p class="itinerary-event">Religious Ceremony</p>
+        <p class="itinerary-sub">Ceremonia Religiosa · CHURCH_NAME</p>
+      </div>
+    </div>
+    <div class="itinerary-item">
+      <span class="itinerary-time">7:00 PM</span>
+      <div>
+        <p class="itinerary-event">Reception Doors Open</p>
+        <p class="itinerary-sub">Apertura de Recepción · VENUE_NAME</p>
+      </div>
+    </div>
+    <div class="itinerary-item">
+      <span class="itinerary-time">7:30 PM</span>
+      <div>
+        <p class="itinerary-event">Grand Entrance</p>
+        <p class="itinerary-sub">Entrada de la Quinceañera</p>
+      </div>
+    </div>
+    <div class="itinerary-item">
+      <span class="itinerary-time">8:00 PM</span>
+      <div>
+        <p class="itinerary-event">Waltz · Vals</p>
+        <p class="itinerary-sub">Traditional Quinceañera Waltz</p>
+      </div>
+    </div>
+    <div class="itinerary-item">
+      <span class="itinerary-time">8:30 PM</span>
+      <div>
+        <p class="itinerary-event">Dinner</p>
+        <p class="itinerary-sub">Cena</p>
+      </div>
+    </div>
+    <div class="itinerary-item">
+      <span class="itinerary-time">9:30 PM</span>
+      <div>
+        <p class="itinerary-event">Surprise Dance · Baile Sorpresa</p>
+      </div>
+    </div>
+    <div class="itinerary-item">
+      <span class="itinerary-time">10:00 PM</span>
+      <div>
+        <p class="itinerary-event">Toast &amp; Cake</p>
+        <p class="itinerary-sub">Brindis y Pastel</p>
+      </div>
+    </div>
+    <div class="itinerary-item">
+      <span class="itinerary-time">12:00 AM</span>
+      <div>
+        <p class="itinerary-event">End of Celebration</p>
+        <p class="itinerary-sub">Fin de Recepción</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 7 — PHOTO 2
+     ✏️  Replace img/photo2.jpg
+     ══════════════════════════════════════ -->
+<img class="photo-full" src="img/photo2.jpg" alt="CLIENT_NAME"/>
+<p class="photo-caption">Imagine it · Feel it · Live it</p>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 8 — QR CODE / SHARED ALBUM
+     ✏️  Replace img/qr.png with your QR code
+     ✏️  DELETE this section if not using a shared album
+     ══════════════════════════════════════ -->
+<section id="share" class="section fade-in">
+  <p class="section-eyebrow">Capture the Magic · Captura la Magia</p>
+  <h2 class="section-title">Share Your Photos</h2>
+  <div class="divider"></div>
+  <div class="qr-box">
+    <img src="img/qr.png" alt="Scan for shared album"/>
+  </div>
+  <p class="share-text">
+    Scan to view &amp; upload photos and videos from this unforgettable night.<br/><br/>
+    Escanea para ver y subir fotos y videos de esta noche inolvidable.
+  </p>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 9 — RSVP
+     ✏️  Replace RSVP_DEADLINE
+     ✏️  Replace YOUR_FORM_ID in the JS below (free at formspree.io)
+     ══════════════════════════════════════ -->
+<section id="rsvp" class="section fade-in">
+  <p class="rsvp-eyebrow">Confirmation · Confirmación</p>
+  <h2 class="rsvp-title">Will You Join Us?</h2>
+  <!-- ✏️ CHANGE deadline -->
+  <p class="rsvp-deadline">Please confirm before · Confirmar antes del: <strong>RSVP_DEADLINE</strong></p>
+
+  <form class="rsvp-form" id="rsvpForm">
+    <div class="form-group">
+      <label class="form-label" for="rsvp-name">Full Name · Nombre Completo *</label>
+      <input class="form-input" type="text" id="rsvp-name" name="name" required placeholder="Your full name"/>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Will you attend? · ¿Asistirás? *</label>
+      <div class="form-radio-group">
+        <div class="form-radio">
+          <input type="radio" name="attending" id="att-yes" value="Yes" required/>
+          <label for="att-yes">✓ &nbsp;Yes · Sí</label>
+        </div>
+        <div class="form-radio">
+          <input type="radio" name="attending" id="att-no" value="No"/>
+          <label for="att-no">✗ &nbsp;No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="rsvp-guests">Number of Guests · Personas</label>
+      <select class="form-select" id="rsvp-guests" name="guests">
+        <option value="1">1 person</option>
+        <option value="2" selected>2 people</option>
+        <option value="3">3 people</option>
+        <option value="4">4 people</option>
+        <option value="5">5 people</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="rsvp-phone">WhatsApp (optional · opcional)</label>
+      <input class="form-input" type="tel" id="rsvp-phone" name="phone" placeholder="(xxx) xxx-xxxx"/>
+    </div>
+
+    <button type="submit" class="btn-submit">Send RSVP · Enviar Confirmación</button>
+  </form>
+
+  <div class="rsvp-success" id="rsvpSuccess">
+    <div class="success-icon">✨</div>
+    <p class="success-title">Thank you!</p>
+    <p class="success-msg">
+      Your RSVP has been received. We can't wait to celebrate with you!<br/><br/>
+      <span style="color:var(--gold)">Gracias · Tu confirmación ha sido enviada. ¡Nos vemos pronto!</span>
+    </p>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     SECTION 10 — CONTACTS
+     ✏️  Replace contact names and phone numbers
+     ══════════════════════════════════════ -->
+<section id="contacts" class="section fade-in">
+  <p class="section-eyebrow">Get in Touch · Contáctanos</p>
+  <h2 class="section-title">Contacts</h2>
+  <p style="font-size:11px;color:var(--gray);margin-top:8px;">For RSVP or questions · Para confirmar o preguntas</p>
+  <div class="divider"></div>
+
+  <div class="contact-grid">
+    <!-- ✏️ CHANGE: contact 1 — replace name and phone number (no dashes, include country code) -->
+    <a class="contact-item" href="https://wa.me/1CONTACT1_PHONE" target="_blank">
+      <span class="contact-role">RSVP</span>
+      <span class="contact-name">CONTACT1_NAME</span>
+      <span class="contact-phone">CONTACT1_DISPLAY_PHONE</span>
+      <span class="contact-wa">WhatsApp ↗</span>
+    </a>
+    <!-- ✏️ CHANGE: contact 2 -->
+    <a class="contact-item" href="https://wa.me/1CONTACT2_PHONE" target="_blank">
+      <span class="contact-role">Information</span>
+      <span class="contact-name">CONTACT2_NAME</span>
+      <span class="contact-phone">CONTACT2_DISPLAY_PHONE</span>
+      <span class="contact-wa">WhatsApp ↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════ -->
+<footer>
+  <p class="footer-by">Photography &amp; Videography by</p>
+  <p class="footer-brand">Image369</p>
+  <p class="footer-tagline">Imagine it &nbsp;·&nbsp; Feel it &nbsp;·&nbsp; Live it.</p>
+  <p class="footer-links">
+    <a href="https://www.instagram.com/image369_global" target="_blank">@image369_global</a>
+    &nbsp;·&nbsp; (323) 252-8952
+  </p>
+</footer>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+     ✏️  ONLY change the 4 values below EVENT_DATE
+     ══════════════════════════════════════ -->
+<script>
+// ── COVER IMAGE ──────────────────────────────────────
+document.getElementById('cover-img').onload = function() {
+  this.classList.add('loaded');
+};
+
+// ── COUNTDOWN ────────────────────────────────────────
+// ✏️ CHANGE THESE 4 VALUES:
+//    Year  |  Month (0=Jan, 9=Oct, 11=Dec)  |  Day  |  Hour (24h)
+const EVENT_DATE = new Date(EVENT_YEAR, EVENT_MONTH_INDEX, EVENT_DAY, EVENT_HOUR, 0, 0);
+
+function updateCountdown() {
+  const diff = EVENT_DATE - new Date();
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML =
+      '<div class="section" style="text-align:center"><p class="section-eyebrow">Today is the Day!</p><h2 class="section-title" style="color:var(--gold)">¡Hoy es el Día! 🎉</h2></div>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000)  / 60000);
+  const s = Math.floor((diff % 60000)    / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ── RSVP FORM ────────────────────────────────────────
+// ✏️ REPLACE with your Formspree endpoint (free at formspree.io)
+const FORMSPREE_URL = "https://formspree.io/f/xaqaqvra";
+
+document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = form.querySelector('.btn-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        name:      form.name.value,
+        attending: form.attending.value,
+        guests:    form.guests.value,
+        phone:     form.phone.value,
+        _subject:  'New RSVP — CLIENT_NAME Quinceañera',
+      }),
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('rsvpSuccess').style.display = 'block';
+    } else { throw new Error(); }
+  } catch {
+    btn.textContent = 'Error — try WhatsApp';
+    btn.disabled = false;
+  }
+});
+
+// ── FADE IN ON SCROLL ────────────────────────────────
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.10 }
+);
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
